@@ -60,9 +60,9 @@ def update_pic(uname):
     return redirect(url_for('main.home',uname=uname))
 
 
-@main.route("/create-post",methods =['GET','POST'])
+@main.route("/create-blog",methods =['GET','POST'])
 @login_required
-def creat_post():
+def creat_blog():
     if request.method == 'POST':
         text = request.form.get('text')
         if not text:
@@ -76,5 +76,5 @@ def creat_post():
             flash('Post has been created successfully',category='success')
 
             return redirect(url_for('views.home'))
-    return render_template('create_post.html',user = current_user)
+    return render_template('create_blog.html',user = current_user)
 
