@@ -31,6 +31,7 @@
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
         <a class="nav-item nav-link" id="home" href="/">Home</a>
+        <li><a href="{{url_for('main.profile',uname=current_user.username)}}" style="font-size: 18.5px; font-family: 'Roboto Mono', monospace;">Profile</a></li>
           {% if current_user.is_authenticated%}
           
           <a class="nav-item nav-link" id="logout" href="{{url_for('auth.logout')}}">Logout</a>
