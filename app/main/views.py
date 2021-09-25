@@ -91,4 +91,36 @@ def delete_post(id):
         db.session.delete(post)
         db.session.commit()
         flash('Post deleted successfuly',category='success')
+    return redirect(url_for('main.home'))
+
+
+@main.route('/posts/<username>')
+@login_required
+def posts(username):
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        flash("user does not exist")
+        return redirect(url_for('views.home'))
+    posts = user.posts
+    return render_template("posts.html",user=current_user,posts=posts,username = username)
+
+
+
+@main.route("/create-comment/<post_id>", methods=['POST'])
+@login_required
+def create_comment(post_id):
+    text = request.form.get('text')
+
+    if not text:
+        flash('Comment cannot be empty.', category='error')
+    else:
+        post = Post.query.filter_by(id=post_id)
+        if post:
+            comment = Comment(
+                text=text, author=current_user.id, post_id=post_id)
+            db.session.add(comment)
+            db.session.commit()
+        else:
+            flash('Post does not exist.', category='error')
+
     return redirect(url_for('views.home'))
