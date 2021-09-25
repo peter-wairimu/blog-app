@@ -10,7 +10,8 @@ from ..models import User,Post
 @main.route("/")
 def home():
     quotes = get_quote()
-    return render_template("index.html",quotes=quotes)
+    posts = Post.query.all()
+    return render_template("index.html",quotes=quotes,user= current_user,posts = posts)
 
 
 
@@ -62,7 +63,7 @@ def update_pic(uname):
 
 @main.route("/create-blog",methods =['GET','POST'])
 @login_required
-def creat_blog():
+def create_blog():
     if request.method == 'POST':
         text = request.form.get('text')
         if not text:
@@ -75,6 +76,6 @@ def creat_blog():
 
             flash('Post has been created successfully',category='success')
 
-            return redirect(url_for('views.home'))
+            return redirect(url_for('main.home'))
     return render_template('create_blog.html',user = current_user)
 
