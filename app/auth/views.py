@@ -6,7 +6,6 @@ from .. import db
 from werkzeug.security import generate_password_hash,  check_password_hash
 
 
-
 @auth.route("/login",methods=['GET','POST'])
 def login():
     if request.method == "POST":
@@ -19,7 +18,7 @@ def login():
             if check_password_hash(user.password,password):
                 flash("Logged in succesfully", category="success")
                 login_user(user,remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('main.home'))
 
             else:
                 flash("Password is incorrect ", category= "error")
@@ -28,12 +27,10 @@ def login():
             flash("User name does not exist")
 
 
-    return  render_template("login.html", user = current_user)
+    return  render_template("login.html",user = current_user )
     
-
-
 @auth.route("/sign-up",methods=['GET','POST'])
-def sign_app():
+def sign_up():
     if request.method == "POST":
         email = request.form.get("email")
         username = request.form.get("username")
@@ -66,17 +63,15 @@ def sign_app():
             db.session.commit()
             login_user(new_user,remember=True)
             flash('User created successfuly')
-            return redirect(url_for("views.home"))
+            return redirect(url_for("main.home"))
 
 
-
-
-    return render_template("signup.html",user= current_user)
+    return render_template("signup.html",user = current_user)
 
 @auth.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("views.home"))
+    return redirect(url_for("main.home"))
 
 

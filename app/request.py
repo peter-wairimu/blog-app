@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Quote
+
 def get_quote():
     '''
     Function that gets the random quotes
