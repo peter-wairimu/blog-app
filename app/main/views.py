@@ -1,11 +1,11 @@
-from flask import render_template,request,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
 from flask_login import login_required,current_user
 from .. import db,photos
 import markdown2
 from ..request import get_quote
 from .forms import  UpdateProfile
-from ..models import User
+from ..models import User,Post
 
 @main.route("/")
 def home():
@@ -58,4 +58,23 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.home',uname=uname))
+
+
+@main.route("/create-post",methods =['GET','POST'])
+@login_required
+def creat_post():
+    if request.method == 'POST':
+        text = request.form.get('text')
+        if not text:
+            flash("Post can not be empty",category='error')
+
+        else:
+            post = Post(text=text,author =current_user.id)
+            db.session.add(post)
+            db.session.commit()
+
+            flash('Post has been created successfully',category='success')
+
+            return redirect(url_for('views.home'))
+    return render_template('create_post.html',user = current_user)
 
