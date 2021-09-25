@@ -5,7 +5,7 @@ from .. import db,photos
 import markdown2
 from ..request import get_quote
 from .forms import  UpdateProfile
-from ..models import User,Post
+from ..models import User,Post,Comment,Like
 
 @main.route("/")
 def home():
@@ -79,3 +79,16 @@ def create_blog():
             return redirect(url_for('main.home'))
     return render_template('create_blog.html',user = current_user)
 
+@main.route("/delete-post/<id>")
+@login_required
+def delete_post(id):
+    post = Post.query.filter_by(id = id).first()
+    if not post:
+        flash("Post does not exist",category='error')
+
+    
+    else:
+        db.session.delete(post)
+        db.session.commit()
+        flash('Post deleted successfuly',category='success')
+    return redirect(url_for('views.home'))
