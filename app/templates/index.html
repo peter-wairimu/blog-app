@@ -10,29 +10,14 @@
           <span id="likes-count-{{post.id}}">
           {{ post.likes|length }}</span> 
           {% if user.id in post.likes|map(attribute="author")|list %}
-          <i
-            class="bi bi-hand-thumbs-up"
-            id="like-button-{{post.id}}"
-            onclick="like({{post.id}})"
-          ></i>
+          <i class="bi bi-hand-thumbs-up" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
           {% else %}
-          <i
-            class="bi bi-hand-thumbs-up"
-            id="like-button-{{post.id}}"
-            onclick="like({{post.id}})"
-          ></i>
+          <i class="bi bi-hand-thumbs-up" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>  
           {% endif %} {% if user.id == post.author %}
-          <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-sm btn-primary dropdown-toggle"
-              data-bs-toggle="dropdown"
-            ></button>
+          <div class="btn-group"><button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>  
             <ul class="dropdown-menu">
               <li>
-                <a href="/delete-post/{{post.id}}" class="dropdown-item"
-                  >Delete</a
-                >
+                <a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a>
               </li>
             </ul>
           </div>
@@ -41,7 +26,7 @@
       </div>
       <div class="card-body">
         <div class="card-text">{{post.text}}</div>
-        <br />
+        <br>
         <div class="collapse" id="comments-{{post.id}}">
           <div class="card">
             <div class="card-body" id="comments-expanded-{{post.id}}">
@@ -49,25 +34,16 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <a href="/posts/{{comment.user.username}}"
-                    >{{comment.user.username}}</a
-                  >: {{comment.text}}
+                    >{{comment.user.username}}</a>
+                  : {{comment.text}}
                 </div>
                 <div>
                   <small class="text-muted"> {{comment.date_created}}</small>
                   {% if user.id == comment.author or user.id == post.author %}
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-primary dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                    ></button>
+                  <div class="btn-group"><button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button> 
                     <ul class="dropdown-menu">
                       <li>
-                        <a
-                          href="/delete-comment/{{comment.id}}"
-                          class="dropdown-item"
-                          >Delete</a
-                        >
+                        <a href="/delete-comment/{{comment.id}}" class="dropdown-item">Delete</a>
                       </li>
                     </ul>
                   </div>
@@ -81,24 +57,14 @@
         <p class="card-text">
           {% if post.comments|length > 0 %}
           <a data-bs-toggle="collapse" href="#comments-{{post.id}}" role="button">
-            <small>View {{post.comments|length}} Comments</small>
+            <p>View {{post.comments|length}} Comments</p>
           </a>
           {% else %}
-          <small class="text-muted">No Comments</small>
+          <p class="text-muted">No Comments</p>
           {% endif %}
         </p>
-        <form
-          class="input-group mb-3"
-          method="POST"
-          action="/create-comment/{{post.id}}"
-        >
-          <input
-            type="text"
-            id="text"
-            name="text"
-            class="form-control"
-            placeholder="Comment something!"
-          />
+        <form class="input-group mb-3" method="POST"  action="/create-comment/{{post.id}}">
+          <input type="text" id="text" name="text" class="form-control" placeholder="write a comment">
           <button type="submit" class="btn btn-primary">Comment</button>
         </form>
       </div>
@@ -108,11 +74,7 @@
   </div>
   {% block footer %}
   <div align="center">
-    <a href="/create-blog"
-      ><button type="button" class="btn btn-primary btn-lg">
-        Create a Post
-      </button></a
-    >
+    <a href="/create-blog"><button type="button" class="btn btn-primary btn-lg"> Create a Post </button></a>
   </div>
   {% endblock %} 
   {% endblock %}
