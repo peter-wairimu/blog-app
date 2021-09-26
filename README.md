@@ -1,4 +1,4 @@
-# Pitch App
+# Blogs app 
 
 ## Date, 19/08/2021
 
@@ -8,17 +8,23 @@
 
 # Description 
 
-Pitch app is an app where users get to read pitches,add apitch and also comment and like a pitch that got them intrested.
+Blog app is an application where users get to see random quotes and blogs posted by others. They can alos like, comment and deleted a post if they want to.
 
 # Instructions
 
-(i). Sign up inorder to access the app,
+(i). Sign up inorder to access the app if you don't have an account or login if you do
 
 
-(ii). Click on the add pitch button in order to comment and also add apitch,
+(ii). Write a comment on the comment section and click on the button beside to submit your comment.
 
 
-(iii).Live a like or disklike in any pitch you choose.
+
+(iii). Create a blog and post it on the home page by simply clicking on the create blog button to write your blog then click on the post botton to post your blog.
+
+
+(iv).Live a like or disklike in any blog you choose.
+
+
 
 
 
