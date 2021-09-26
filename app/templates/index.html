@@ -8,21 +8,23 @@
        
     <style>
     body{
-        background: url("{{ url_for('static',filename='images/img2.jpg') }}") center/cover no-repeat;}
+        background: url("{{ url_for('static',filename='images/ted2.jpg') }}") center/cover no-repeat;}
     </style>
 
   
   <h1 align="center">{% block header %}Posts{% endblock %}</h1>
-  <div id="posts">
+  
+  <div id="posts" class="">
+    
     {% for post in posts %}
-    <div id="posts" class="card border-dark">
-      <div class="card-header d-flex justify-content-between align-items-center">
+    <div  id="posted" class="card border-dark " style="width: 50vw;">
+      <div class="card-header d-flex justify-content-between align-items-center" >
         <a class="user"  href="/posts/{{post.user.username}}">{{post.user.username}}</a>
         <div>
           <span id="likes-count-{{post.id}}">
           {{ post.likes|length }}</span> 
           {% if user.id in post.likes|map(attribute="author")|list %}
-          <i class="bi bi-heart" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
+          <i class="bi bi-heart" style="color: rgb(177, 42, 42);" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
           {% else %}
           <i class="bi bi-heart" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>  
           {% endif %} {% if user.id == post.author %}
@@ -49,7 +51,7 @@
           </div>
         </div>
         </div>
-        <div class="card-text">{{post.text}}</div>
+        <div class="card-text" style="color: rgb(23, 112, 62); font-size: 1.3rem; font-style: italic; text-transform: capitalize;">{{post.text}}</div>
         <br>
         <div class="collapse" id="comments-{{post.id}}">
           <div class="card">
@@ -84,7 +86,7 @@
             <p>View {{post.comments|length}} Comments</p>
           </a>
           {% else %}
-          <p class="text-muted">No Comments</p>
+          <p class="text-muted" style="font-style: italic; color: rgb(20, 201, 98); font-family: 'Koh Santepheap', cursive;">No Comments</p>
           {% endif %}
         </p>
         <form class="input-group mb-3" method="POST"  action="/create-comment/{{post.id}}">
@@ -92,8 +94,9 @@
           <button type="submit" class="btn btn-primary">Comment</button>
         </form>
       </div>
-      <div class="card-footer text-muted">{{post.date_created}}</div>
+      <div  class="card-footer text-muted" style="background-color: black; color: rgb(24, 124, 91);"> Posted on: {{post.date_created.today().strftime('%Y-%m-%d %H;%M')}}</div>
     </div>
+    
     <br> {% endfor %}
   </div>
   {% block footer %}
@@ -166,10 +169,10 @@
     }
     
   
-    #posts{
-      background: url("{{ url_for('static',filename='images/img5.jpg') }}") center/cover no-repeat;
-    
+    #posted{
+      background: url("{{ url_for('static',filename='images/img2.jpg') }}") center/cover no-repeat;
     }
+    
     
 
     

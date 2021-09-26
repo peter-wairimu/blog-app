@@ -4,13 +4,6 @@ function like(postId) {
   
     fetch(`/like-post/${postId}`, { method: "POST" })
       .then((res) => res.json())
-      .then((data) => {
-        likeCount.innerHTML = data["likes"];
-        if (data["liked"] === true) {
-          likeButton.className = "bi bi-heart";
-        } else {
-          likeButton.className = "bi bi-heart";
-        }
-      })
+    
       .catch((e) => alert("Could not like post."));
   }
