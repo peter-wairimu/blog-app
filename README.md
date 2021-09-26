@@ -36,10 +36,10 @@ Pitch app is an app where users get to read pitches,add apitch and also comment 
 
 
 ## 
-<img src="app/static/images/screen4.png">
-<img src="app/static/images/screen3.png">
 <img src="app/static/images/screen2.png">
 <img src="app/static/images/screen1.png">
+<img src="app/static/images/screen4.png">
+<img src="app/static/images/screen3.png">
 
 
 

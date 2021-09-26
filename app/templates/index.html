@@ -29,9 +29,9 @@
           <i class="bi bi-heart" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>  
           {% endif %} {% if user.id == post.author %}
           <div class="btn-group"><button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>  
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" style="background-color: rgb(23, 112, 62); border: none;">
               <li>
-                <a href="/delete-post/{{post.id}}" class="dropdown-item">Delete</a>
+                <a href="/delete-post/{{post.id}}" class="dropdown-item" style="font-style: italic;color: rgb(201, 143, 36); ">Delete</a>
               </li>
             </ul>
           </div>

@@ -8,6 +8,7 @@ from .forms import  UpdateProfile
 from ..models import User,Post,Comment,Like
 
 @main.route("/")
+@login_required
 def home():
     quotes = get_quote()
     posts = Post.query.all()
