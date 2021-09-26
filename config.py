@@ -9,7 +9,7 @@ class Config:
     '''
     
 
-    SECRET_KEY ='Your secret key' 
+    SECRET_KEY ='hdgvgvdvdvhdjjsjsvhsvs' 
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:wairimu22@localhost/bloggsapp'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
