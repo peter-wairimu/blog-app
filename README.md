@@ -42,10 +42,10 @@ Blog app is an application where users get to see random quotes and blogs posted
 
 
 ## 
-<img src="app/static/images/screen2.png">
-<img src="app/static/images/screen1.png">
-<img src="app/static/images/screen4.png">
-<img src="app/static/images/screen3.png">
+<img src="app/static/images/read2.png">
+<img src="app/static/images/read1.png">
+<img src="app/static/images/read4.png">
+<img src="app/static/images/read3.png">
 
 
 
