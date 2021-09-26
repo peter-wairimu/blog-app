@@ -1,14 +1,45 @@
 {% extends "base.html" %}
 {% block title%}{% endblock %}
 {% block content %}
-<h1 align = center>Post a Blog</h1>
+
+<body>
+       
+    <style>
+    body{
+        background: url("{{ url_for('static',filename='images/img3.jpg') }}") center/cover no-repeat;}
+    </style>
+
+
+
+
+<h1 align = center style="text-transform: uppercase; color: rgb(165, 112, 47); font-style: italic; font-family: 'Courier New', Courier, monospace;">Post  Blog</h1>
 <form method="POST">
-    <textarea name="text" id="text" class="form-control"></textarea>
-    <div align=center>
-    <button type="submit" class="btn btn-success" >Post</button>
+<div class="card" align="center" style="width: 45rem; height: 24rem;">
+    <div class="card-body">
+      <h5 class="card-title" style="font-style: italic; font-family: 'Courier New', Courier, monospace; color: rgb(161, 105, 36);">Post a Blog</h5>
+      <p class="card-text"><textarea name="text" id="text" class="form-control"></textarea></p>
+      <div align=center>
+        <button type="submit" class="btn btn-success" >Post</button>
+        </div>
+      
     </div>
-</form><br>
-<div align = 'center'>
-    <a href="/home"><button type="button" class="btn btn-lg btn-primary">Back</button></a>
+  </div>
+</form>
+
+<div >
+    <a href="{{url_for('main.home')}}"><button type="button" class="btn btn-lg btn-primary">Back</button></a>
 </div>
+
+
+
+<style>
+
+.card{
+
+    background-color: azure;
+}
+
+
+</style>
+
 {% endblock %}

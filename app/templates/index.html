@@ -1,5 +1,18 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-  %}
+{% extends "base.html" %}
+ {% block title %}
+ Home
+ {% endblock %}
+  {% block content%}
+  
+
+  <body>
+       
+    <style>
+    body{
+        background: url("{{ url_for('static',filename='images/img2.jpg') }}") center/cover no-repeat;}
+    </style>
+
+  
   <h1 align="center">{% block header %}Posts{% endblock %}</h1>
   <div id="posts">
     {% for post in posts %}
@@ -10,9 +23,9 @@
           <span id="likes-count-{{post.id}}">
           {{ post.likes|length }}</span> 
           {% if user.id in post.likes|map(attribute="author")|list %}
-          <i class="bi bi-hand-thumbs-up" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
+          <i class="bi bi-heart" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>
           {% else %}
-          <i class="bi bi-hand-thumbs-up" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>  
+          <i class="bi bi-heart" id="like-button-{{post.id}}" onclick="like({{post.id}})"></i>  
           {% endif %} {% if user.id == post.author %}
           <div class="btn-group"><button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button>  
             <ul class="dropdown-menu">
@@ -25,6 +38,12 @@
         </div>
       </div>
       <div class="card-body">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{quotes.author}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{quotes.quote}}</h6>
+          </div>
+        </div>
         <div class="card-text">{{post.text}}</div>
         <br>
         <div class="collapse" id="comments-{{post.id}}">
@@ -38,7 +57,7 @@
                   : {{comment.text}}
                 </div>
                 <div>
-                  <small class="text-muted"> {{comment.date_created}}</small>
+                  <small class="text-muted"> {{comment.date_created.today().strftime('%Y-%m-%d %H;%M')}}</small>
                   {% if user.id == comment.author or user.id == post.author %}
                   <div class="btn-group"><button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown"></button> 
                     <ul class="dropdown-menu">
