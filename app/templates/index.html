@@ -19,7 +19,7 @@
     {% for post in posts %}
     <div  id="posted" class="card border-dark " style="width: 50vw;">
       <div class="card-header d-flex justify-content-between align-items-center" >
-        <a class="user"  href="/posts/{{post.user.username}}">{{post.user.username}}</a>
+        <h6 style="font-style: italic; font-size: 1.2rem; color:rgb(201, 143, 36) ;">{{post.user.username}}</h6>
         <div>
           <span id="likes-count-{{post.id}}">
           {{ post.likes|length }}</span> 
